@@ -1,7 +1,0 @@
-File from: [app/dev/img/**/*.{jpg,JPG,jpeg,JPEG,png,PNG,gif}]
-
-File to: [-]
-
-Compression algorithm: [-]
-
-Description:  Directory is empty!: 

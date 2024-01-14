@@ -4,6 +4,7 @@ const gulpClean = require('gulp-clean');
 const concat = require('gulp-concat');
 const include = require('gulp-include');
 const flatten = require('gulp-flatten'); // исключает путь у файла
+const ghPages = require('gulp-gh-pages');
 
 // CONFIG
 const siteName = 'creative-portfolio'   // название главной страницы сайта
@@ -23,7 +24,6 @@ const jsResult = `index.min.js`    // результирующий файл js
 const imgDevDir = `${devDir}/img`    // каталог исходных изображений
 const spriteDevDir = `${imgDevDir}/sprite`    // каталог для svg, которые необходимо объединить в спрайт
 const imgResultDir = `${resultDir}/img`    // каталог результирующих сжатых и преобразованных изображений
-const spriteResultDir = `${imgResultDir}/sprite`    // каталог исходных изображений
 // fonts
 const fontsDevDir = `${devDir}/fonts`    // каталог исходных шрифтов
 const fontsResultDir = `${resultDir}/fonts`    // каталог результирующих шрифтов
@@ -317,11 +317,6 @@ const fonter = require('gulp-fonter')
 const ttf2woff = require('gulp-ttf2woff')
 const ttf2woff2 = require('gulp-ttf2woff2')
 
-function cleanFonts() {
-	return src(`${fontsResultDir}/*`, { allowEmpty: true })
-		.pipe(gulpClean())
-}
-
 function startFonter() {
 	return src(`${fontsDevDir}/**/*.{otf,eot}`)
 		.pipe(fonter({ formats: ['ttf'] }))
@@ -378,6 +373,13 @@ function cleanSrc() {
 	], { allowEmpty: true })
 		.pipe(gulpClean())
 }
+
+// DEPLOY
+function deployDist() {
+	return src(`${distDir}/**/*`)
+		.pipe(ghPages())
+}
+exports.deploy = deployDist
 
 exports.default = series(
 	cleanSrc,

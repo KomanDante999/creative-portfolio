@@ -19,6 +19,7 @@
 		"gulp-clean-css": "^4.3.0",
 		"gulp-flatten": "^0.4.0",
 		"gulp-fonter": "^0.3.0",
+		"gulp-gh-pages": "^0.5.4",
 		"gulp-include": "^2.4.1",
 		"gulp-less": "^5.0.0",
 		"gulp-sass": "^5.1.0",
@@ -33,5 +34,8 @@
 	"dependencies": {
 		"gulp-concat": "^2.6.1",
 		"gulp-uglify-es": "^3.0.0"
+	},
+	"env": {
+		"GITHUB_REPOSITORY": "https://github.com/KomanDante999/creative-portfolio.git"
 	}
 }
